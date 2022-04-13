@@ -6,7 +6,9 @@ export default function InputTask(props) {
   let callback = props.addTaskCallback;
 
   const clearInput = () => {
-    callback(inputValue);
+    if (inputValue !== "") {
+      callback(inputValue);
+    }
     setInputValue("");
   };
 
@@ -21,9 +23,9 @@ export default function InputTask(props) {
               className="form-control py-2"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-            ></input>
+            />
             <div className="input-group-append">
-            <button
+              <button
                 className="btn btn-success py-2"
                 onClick={clearInput}
                 type="button"
