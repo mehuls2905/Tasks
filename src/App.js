@@ -9,7 +9,7 @@ function App() {
 
   const addTasks = (task) => {
     let tempTasks = tasks["tasks"];
-    task = { id: tempTasks.length + 1, text: task, strike: false};
+    task = { id: tempTasks.length + 1, text: task, strike: false };
     tempTasks.push(task);
     setTask({ tasks: tempTasks });
   };
@@ -18,7 +18,6 @@ function App() {
     let tempTasks = tasks["tasks"];
     let result = [];
     for (let i = 0; i < tempTasks.length; i++) {
-      console.log(tempTasks[i].id, taskid);
       if (tempTasks[i].id !== +taskid) {
         result.push(tempTasks[i]);
       }
@@ -31,7 +30,7 @@ function App() {
     let result = [];
     for (let i = 0; i < tempTasks.length; i++) {
       if (tempTasks[i].id === +taskid) {
-        tempTasks[i].strike = true
+        tempTasks[i].strike = true;
       }
       result.push(tempTasks[i]);
     }
@@ -41,7 +40,12 @@ function App() {
   return (
     <div className="App container text-center">
       <InputTask addTaskCallback={addTasks} />
-      <ListTasks tasksList={tasks["tasks"]} removeTaskCallback={removeTasks} strikeTaskCallback={strikeTask}/>
+      <ListTasks
+        tasksList={tasks["tasks"]}
+        removeTaskCallback={removeTasks}
+        strikeTaskCallback={strikeTask}
+        setTask={setTask}
+      />
     </div>
   );
 }
